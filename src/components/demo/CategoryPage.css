@@ -1,0 +1,50 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .category-item {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .category-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    color: rgb(4, 2, 2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  .category-button:hover {
+    background-color: #e2e2e2;
+  }
+  
+
+  
+  .notes-container {
+    margin-top: 10px;
+    padding-left: 20px; /* Add padding to create indentation */
+    width: calc(100% - 40px); /* Slightly reduce the width */
+  }
+  
+  .note-card {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }

@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ... */
+
+
+
+
+.login-card {
+  background-color: #eeefed; /* White background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+}
+
+.login-card-header {
+  margin-bottom: 20px;
+}
+
+.login-card-title {
+  font-size: 2rem; /* Larger font size */
+  color: #333333; /* Dark grey color */
+}
+
+.login-card-description {
+  color: #666666; /* Medium grey color */
+}
+
+.login-form-grid {
+  gap: 16px; /* Space between form elements */
+}
+
+.login-form-group {
+  gap: 8px; /* Space between label and input */
+}
+
+.login-form-label {
+  color: #555555; /* Dark grey color */
+}
+
+.login-form-input {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #cccccc; /* Light grey border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px; /* Padding inside input */
+}
+
+.login-form-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-form-link {
+  color: #1d4ed8; /* Blue color */
+  text-decoration: underline;
+}
+
+.login-form-error {
+  color: #ff0000; /* Red color */
+}
+
+.login-form-button {
+  background-color: #1d4ed8; /* Blue background */
+  color: #ffffff; /* White text */
+  padding: 10px;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.login-form-button:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+}
+
+.login-form-google-button {
+  background-color: #ffffff; /* White background */
+  color: #333333; /* Dark grey text */
+  border: 1px solid #cccccc; /* Light grey border */
+  padding: 10px;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.login-form-google-button:hover {
+  background-color: #f0f4f8; /* Light grey on hover */
+}
