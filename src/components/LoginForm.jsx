@@ -42,16 +42,13 @@ export function LoginForm({ className, ...props }) {
         }),
       });
 
-      console.log('Response status:', response.status); // Log HTTP status
-      const message = await response.text(); // Get response body as text
-      console.log('Response message:', message); 
-
+      const data = await response.json();
       if (response.ok) {
-        alert(message);
-        navigate('/notes');
-        // Redirect or handle success (e.g., save token, navigate to dashboard)
+        const token = data["Login successful"];
+        localStorage.setItem('authToken', token); // Store the token in localStorage
+        navigate('/notes'); // Redirect to NoteLists page
       } else {
-        setError(message);
+        setError(data.message || 'Login failed');
       }
     } catch (err) {
       setError('Something went wrong. Please try again later.');

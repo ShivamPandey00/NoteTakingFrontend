@@ -8,6 +8,7 @@ import { NoteLists } from './components/NoteLists';
 import { Layout } from './components/Layout';
 import TextEditor from './components/TextEditor/TextEditor';
 import { CategoryPage } from './components/CategoryPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -17,9 +18,9 @@ function App() {
       <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Page />} />
         <Route path="/signup" element={<SignupForm />} />
-        <Route path="/notes" element={<Layout><NoteLists /></Layout>} />
-        <Route path="/TextEditor" element={<Layout><TextEditor /></Layout>} />
-        <Route path="/category" element={<Layout><CategoryPage /></Layout>} />
+        <Route path="/notes" element={<ProtectedRoute><Layout><NoteLists /></Layout></ProtectedRoute>} />
+        <Route path="/TextEditor" element={<ProtectedRoute><Layout><TextEditor /></Layout></ProtectedRoute>} />
+        <Route path="/category" element={<ProtectedRoute><Layout><CategoryPage /></Layout></ProtectedRoute>} />
       </Routes>
     </Router>
     </div>

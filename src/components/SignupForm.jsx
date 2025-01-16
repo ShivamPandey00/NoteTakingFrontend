@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,6 +16,7 @@ export function SignupForm() {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ export function SignupForm() {
 
       if (response.ok) {
         alert(message);
+        navigate('/login');
         // Redirect or handle success (e.g., save token, navigate to dashboard)
       } else {
         setError(message);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './demo/CategoryPage.css';
+import { fetchWithAuth } from './api';
 
 export function CategoryPage() {
   const [notes, setNotes] = useState([]);
@@ -11,7 +12,7 @@ export function CategoryPage() {
     // Fetch all notes data from the backend
     const fetchNotes = async () => {
       try {
-        const response = await fetch('http://localhost:8080/notes/list');
+        const response = await fetchWithAuth('http://localhost:8080/notes/list');
         const data = await response.json();
         setNotes(data);
 

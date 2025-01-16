@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
+import { fetchWithAuth } from './api';
 
 export function NoteLists() {
   const [notes, setNotes] = useState([]);
@@ -20,7 +21,7 @@ export function NoteLists() {
     // Fetch notes data from the backend
     const fetchNotes = async () => {
       try {
-        const response = await fetch('http://localhost:8080/notes/list');
+        const response = await fetchWithAuth('http://localhost:8080/notes/list');
         const data = await response.json();
         setNotes(data);
       } catch (error) {
@@ -41,7 +42,7 @@ export function NoteLists() {
 
   const handleDeleteNote = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/notes/delete/${id}`, {
+      const response = await fetchWithAuth(`http://localhost:8080/notes/delete/${id}`, {
         method: 'DELETE',
       });
 

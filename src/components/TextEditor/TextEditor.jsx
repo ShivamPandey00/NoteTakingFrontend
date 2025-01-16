@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate, useLocation } from 'react-router-dom';
+import { fetchWithAuth } from '../api';
 
 export default function TextEditor() {
   const [formData, setFormData] = useState({ title: '', category: '', content: '' });
@@ -43,7 +44,7 @@ export default function TextEditor() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8080/notes/create', {
+      const response = await fetchWithAuth('http://localhost:8080/notes/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
