@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import './demo/CategoryPage.css';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { useNavigate } from 'react-router-dom';
 import { fetchWithAuth } from './api';
+import './demo/CategoryPage.css';
 
 export function CategoryPage() {
   const [notes, setNotes] = useState([]);
   const [categories, setCategories] = useState([]);
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [filteredNotes, setFilteredNotes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch all notes data from the backend
@@ -37,6 +49,10 @@ export function CategoryPage() {
     }
   };
 
+  const handleEditNote = (note) => {
+    navigate('/TextEditor', { state: { note } }); // Navigate to the TextEditor page with note data
+  };
+
   return (
     <div className="container">
       <h1 className="text-2xl font-bold mb-4">Categories</h1>
@@ -53,13 +69,30 @@ export function CategoryPage() {
               </span>
             </button>
             {expandedCategory === category && (
-              <div className="notes-container">
-                {filteredNotes.map((note) => (
-                  <div key={note.id} className="note-card">
-                    <h2 className="font-bold">{note.title}</h2>
-                  </div>
-                ))}
-              </div>
+              <Table className="notes-table expanded w-full max-w-4xl mx-auto mt-4">
+                <TableCaption>Notes in category {category}</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[100px]">ID</TableHead>
+                    <TableHead>Title</TableHead>
+                    <TableHead>Category</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredNotes.map((note) => (
+                    <TableRow key={note.id} onClick={() => handleEditNote(note)} className="cursor-pointer">
+                      <TableCell className="font-medium">{note.id}</TableCell>
+                      <TableCell>{note.title}</TableCell>
+                      <TableCell>{note.category}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+                <TableFooter>
+                  <TableRow>
+                    <TableCell colSpan={3}>Total Notes: {filteredNotes.length}</TableCell>
+                  </TableRow>
+                </TableFooter>
+              </Table>
             )}
           </li>
         ))}

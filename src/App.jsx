@@ -9,6 +9,8 @@ import { Layout } from './components/Layout';
 import TextEditor from './components/TextEditor/TextEditor';
 import { CategoryPage } from './components/CategoryPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import { ProfilePage } from './components/ProfilePage';
+import { SearchResultsPage } from './components/SearchResultsPage';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/notes" element={<ProtectedRoute><Layout><NoteLists /></Layout></ProtectedRoute>} />
         <Route path="/TextEditor" element={<ProtectedRoute><Layout><TextEditor /></Layout></ProtectedRoute>} />
         <Route path="/category" element={<ProtectedRoute><Layout><CategoryPage /></Layout></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><Layout><ProfilePage /></Layout></ProtectedRoute>} />
+        <Route path="/search" element={<ProtectedRoute><Layout><SearchResultsPage /></Layout></ProtectedRoute>} />
       </Routes>
     </Router>
     </div>
