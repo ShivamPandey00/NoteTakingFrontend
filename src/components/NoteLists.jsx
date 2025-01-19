@@ -21,7 +21,7 @@ export function NoteLists() {
     // Fetch notes data from the backend
     const fetchNotes = async () => {
       try {
-        const response = await fetchWithAuth('http://localhost:8080/notes/list');
+        const response = await fetchWithAuth('https://app-deployment-latest.onrender.com/notes/list');
         const data = await response.json();
         setNotes(data);
       } catch (error) {
@@ -42,7 +42,7 @@ export function NoteLists() {
 
   const handleDeleteNote = async (id) => {
     try {
-      const response = await fetchWithAuth(`http://localhost:8080/notes/delete/${id}`, {
+      const response = await fetchWithAuth(`https://app-deployment-latest.onrender.com/notes/delete/${id}`, {
         method: 'DELETE',
       });
 

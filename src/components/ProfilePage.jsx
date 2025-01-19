@@ -7,7 +7,7 @@ export function ProfilePage() {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await fetchWithAuth('http://localhost:8080/notes/auth/userdetails');
+        const response = await fetchWithAuth('https://app-deployment-latest.onrender.com/notes/auth/userdetails');
         const data = await response.json();
         setUserInfo(data);
       } catch (error) {

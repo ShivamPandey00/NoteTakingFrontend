@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export function SignupForm() {
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState({ username: '', password: '', name: '', email: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export function SignupForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.username || !formData.password) {
+    if (!formData.username || !formData.password || !formData.name || !formData.email) {
       setError('All fields are required.');
       return;
     }
@@ -30,7 +30,7 @@ export function SignupForm() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8080/notes/auth/signup', {
+      const response = await fetch('https://app-deployment-latest.onrender.com/notes/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,6 +38,8 @@ export function SignupForm() {
         body: JSON.stringify({
           username: formData.username,
           password: formData.password,
+          name: formData.username,
+          email: formData.email,
         }),
       });
 
@@ -53,6 +55,7 @@ export function SignupForm() {
         setError(message);
       }
     } catch (err) {
+      console.error('Signup failed:', err);
       setError('Something went wrong. Please try again later.');
     } finally {
       setLoading(false);
@@ -87,6 +90,28 @@ export function SignupForm() {
                   type="password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  required
+                  className="border border-gray-300 rounded-md p-2 bg-white"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="name" className="text-gray-700">Name</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="border border-gray-300 rounded-md p-2 bg-white"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="email" className="text-gray-700">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                   className="border border-gray-300 rounded-md p-2 bg-white"
                 />

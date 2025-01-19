@@ -10,7 +10,7 @@ export function SearchResultsPage() {
     const query = new URLSearchParams(location.search).get('query');
     const fetchSearchResults = async () => {
       try {
-        const response = await fetchWithAuth(`http://localhost:8080/notes/search/${query}`);
+        const response = await fetchWithAuth(`https://app-deployment-latest.onrender.com/notes/search/${query}`);
         const data = await response.json();
         setSearchResults(data);
       } catch (error) {

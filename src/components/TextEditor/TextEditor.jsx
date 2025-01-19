@@ -44,7 +44,7 @@ export default function TextEditor() {
     e.preventDefault();
 
     try {
-      const response = await fetchWithAuth('http://localhost:8080/notes/create', {
+      const response = await fetchWithAuth('https://app-deployment-latest.onrender.com/notes/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

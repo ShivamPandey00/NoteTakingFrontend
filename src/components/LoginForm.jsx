@@ -31,7 +31,7 @@ export function LoginForm({ className, ...props }) {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8080/notes/auth/login', {
+      const response = await fetch('https://app-deployment-latest.onrender.com/notes/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
